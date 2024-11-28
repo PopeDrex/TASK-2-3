@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,7 @@
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
+
         .parallax {
             background-image: url('./images/index.jpg');
             height: 100vh;
@@ -21,6 +22,7 @@
             background-size: cover;
             position: relative;
         }
+
         .parallax::after {
             content: '';
             position: absolute;
@@ -30,25 +32,34 @@
             height: 100%;
             /* background-color: rgba(0, 0, 0, 0.5); */
         }
+
         .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure content takes at least full viewport height */
             text-align: center;
-            padding: 80px 20px;
             background-color: #f9f9f9;
+            padding: 20px; /* Add padding */
+            box-sizing: border-box;
         }
+
         form {
             background: #fff;
             max-width: 600px;
-            margin: 0 auto;
-            padding: 40px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            border-radius: 8px;
+            width: 100%;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
+
         h2 {
             margin-bottom: 20px;
             font-weight: 600;
             font-size: 32px;
             color: #333;
         }
+
         label {
             display: block;
             text-align: left;
@@ -56,8 +67,10 @@
             font-weight: 600;
             color: #555;
         }
+
         input[type="text"],
         input[type="number"],
+        input[type="tel"],
         select,
         textarea {
             width: 100%;
@@ -69,37 +82,53 @@
             font-size: 16px;
             background-color: #fdfdfd;
         }
+
         input[type="text"]:focus,
         input[type="number"]:focus,
+        input[type="tel"]:focus,
         select:focus,
         textarea:focus {
             border-color: #4CAF50;
             outline: none;
         }
+
         .checkbox-group {
             text-align: left;
+            display: flex;
+            flex-direction: column;
         }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
         .checkbox-group input[type="checkbox"] {
             margin-right: 10px;
         }
+
         input[type="submit"] {
+            width: 100%;
+            padding: 15px;
             background-color: #4CAF50;
             color: white;
-            padding: 15px 30px;
-            margin-top: 20px;
             border: none;
-            border-radius: 50px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
+
         input[type="submit"]:hover {
             background-color: #45a049;
             transform: translateY(-2px);
         }
+
         input[type="submit"]:active {
             transform: translateY(0);
         }
+
         /* Responsive Design */
         @media (max-width: 600px) {
             form {
@@ -112,19 +141,21 @@
                 width: 100%;
             }
         }
+
         .scroll-down {
             position: absolute;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 20px;
+            font-size: 24px;
             color: white;
             text-decoration: none;
-            animation: bounce 2s infinite;
         }
+
         .scroll-down:hover {
             text-decoration: underline;
         }
+
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
                 transform: translateX(-50%) translateY(0);
@@ -139,7 +170,6 @@
     </style>
 </head>
 <body>
-
     <div class="parallax">
         <a href="#form" class="scroll-down">▼</a>
     </div>
@@ -155,6 +185,20 @@
             <label for="age">Age:</label>
             <input type="number" id="age" name="age" required min="0" max="120">
 
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required placeholder="Enter your address">
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
             <label for="education">Education Level:</label>
             <select id="education" name="education" required>
                 <option value="">Select your education level</option>
@@ -163,26 +207,29 @@
                 <option value="masters">Master's Degree</option>
                 <option value="doctorate">Doctorate</option>
             </select>
-          <input type="button" onclick="location.href='https://test-lmao.html';" value="DON'T TOUCH" />
-        
+
             <label for="interests">Areas of Interest:</label>
             <div class="checkbox-group">
-                <input type="checkbox" id="interest1" name="interests" value="programming">
-                <label for="interest1">Programming</label><br>
-                <input type="checkbox" id="interest2" name="interests" value="design">
-                <label for="interest2">Design</label><br>
-                <input type="checkbox" id="interest3" name="interests" value="marketing">
-                <label for="interest3">Marketing</label><br>
+                <label for="interest1">
+                    <input type="checkbox" id="interest1" name="interests" value="programming">
+                    Programming
+                </label>
+                <label for="interest2">
+                    <input type="checkbox" id="interest2" name="interests" value="design">
+                    Design
+                </label>
+                <label for="interest3">
+                    <input type="checkbox" id="interest3" name="interests" value="marketing">
+                    Marketing
+                </label>
             </div>
 
-            <label for="bio">Brief Bio:</label>
-            <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself"></textarea>
+            <label for="comments">Additional Comments:</label>
+            <textarea id="comments" name="comments" rows="4" placeholder="Enter any additional comments here"></textarea>
 
             <input type="submit" value="Submit">
         </form>
     </div>
-
-    <div class="parallax"></div>
 
 </body>
 </html>
